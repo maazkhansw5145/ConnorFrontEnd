@@ -1,0 +1,106 @@
+.home {
+  width: 90vw;
+  margin-top: 40px;
+  margin-left: 5vw;
+  padding-bottom: 75px;
+}
+
+.startScreen {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.infoLeft {
+  width: 43vw;
+  padding-right: 2vw;
+  border-right: 1px solid gray;
+  text-align: center;
+}
+.home h2 {
+  font-size: 28px;
+}
+
+.infoRight {
+  width: 43vw;
+  margin-top: 25px;
+  margin-left: 2vw;
+  text-align: center;
+}
+
+.joinBtn {
+  text-decoration: none !important;
+  border: 2px solid #000;
+  width: 80%;
+  height: 48px;
+  padding: 5px;
+  font-size: 22px;
+  background-color: transparent;
+}
+.joinBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.faq h2 {
+  width: 90vw;
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 1px solid gray;
+  text-align: center;
+}
+.faqQuestions {
+  padding-bottom: 15px;
+}
+
+.locationInfo {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  border-top: 1px solid gray;
+  text-align: center;
+}
+.map {
+  display: flex;
+  align-content: center;
+  width: 43vw;
+  margin-right: 2vw;
+  justify-content: center;
+}
+.map img {
+  padding-top: 35px;
+  display: flex;
+  height: 250px;
+}
+
+@media (max-width: 600px) {
+  .home {
+    display: block;
+  }
+  .startScreen {
+    display: block;
+    width: 100vw;
+  }
+  .infoLeft {
+    width: 90vw;
+    border: none;
+  }
+  .infoRight {
+    width: 90vw;
+    border: none;
+  }
+
+  .locationInfo {
+    display: block;
+    margin-top: -300px;
+    border: none;
+  }
+  .map {
+    visibility: hidden;
+  }
+}
+@media (max-width: 900px) {
+  .map img {
+    height: 200px;
+    margin-top: 100px;
+  }
+}

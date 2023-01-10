@@ -1,0 +1,45 @@
+.dashboard {
+  display: block;
+  min-height: calc(100vh - 140px);
+}
+
+.container {
+  padding-top: 30px;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.db_Actions {
+  margin-bottom: 30px;
+  border: 1px solid #e7edf1;
+  box-shadow: 0px 4px 35px rgb(0 0 0 / 4%);
+  border-radius: 5px;
+}
+.db_Actions ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.block {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  width: calc(100% / 3);
+  border-bottom: 1px solid #e7edf1;
+  border-right: 1px solid #e7edf1;
+}
+.block:link {
+  text-decoration: none !important;
+}
+
+.block h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 135px;
+  color: #000;
+  text-align: center;
+}

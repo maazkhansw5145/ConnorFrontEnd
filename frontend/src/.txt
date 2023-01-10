@@ -1,0 +1,22 @@
+ProfitOutcome completion;
+
+> Collaborate the new frontend with the old backend. Ensure MongoDB auth/role works.
+
+> Add an admin panel (extra role in backend). This will allow my staff / admin to
+add posts / sections to the Signup Offers and Casino Offers. In the same style 
+that they use on OutPlayed.com (I will provide you my log in details).
+
+> Fix both the QualBet / FreeBet calculator to ensure that the correct answers
+are providing after clicking the Calculate button only once.
+
+> Profit Tracker, where users can input a date / descriptions / profit. 
+Where users can see their profits, monthly profits and all time profits.
+As well as admins to the database to see the top performing users.
+
+Outplayed.com (login details)
+Connor.hallam1715@gmail.com
+
+
+Work after completion (do not add in price yet)
+> Oddsmatcher.
+> Forum / ChatRoom.
