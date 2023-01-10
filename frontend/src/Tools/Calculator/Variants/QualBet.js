@@ -73,7 +73,7 @@ function QualBet(props) {
           style={{
             textAlign: "center",
             color: "black",
-            padding: 40,
+            padding: "90px 40px 0 40px",
           }}
         >
           <h2
@@ -88,14 +88,10 @@ function QualBet(props) {
             </span>{" "}
             membership to access all the{" "}
             <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
-              features
+              features.
             </span>
           </h4>
-          <div
-            style={{
-              margin: "60px 0 30px 0",
-            }}
-          ></div>
+          <a href="https://discord.gg/jmw2Tcjjn6" style={{fontSize:19,textDecoration:'none',fontStyle:'italic'}}>Visit The Discord Server</a>
         </div>
       </div>
     );

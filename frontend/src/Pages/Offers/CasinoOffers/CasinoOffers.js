@@ -38,6 +38,7 @@ function Offers(props) {
     return <Loading />;
   }
 
+  
   if (props.auth.user?.role !== "gold") {
     return (
       <div className="casinoOffers" style={{background:'aliceblue'}}>
@@ -45,7 +46,7 @@ function Offers(props) {
           style={{
             textAlign: "center",
             color: "black",
-            padding: 40,
+            padding: "90px 40px 0 40px",
           }}
         >
           <h2
@@ -60,9 +61,10 @@ function Offers(props) {
             </span>{" "}
             membership to access all the{" "}
             <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
-              features
+              features.
             </span>
           </h4>
+          <a href="https://discord.gg/jmw2Tcjjn6" style={{fontSize:19,textDecoration:'none',fontStyle:'italic'}}>Visit The Discord Server</a>
           <div
             style={{
               margin: "60px 0 30px 0",
@@ -72,6 +74,7 @@ function Offers(props) {
       </div>
     );
   }
+
 
   return (
     <div className="casinoOffers">
