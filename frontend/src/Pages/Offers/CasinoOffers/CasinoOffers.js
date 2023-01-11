@@ -111,7 +111,7 @@ function Offers(props) {
           }}
         >
           <h3 style={{ textAlign: "start", marginLeft: 15 }}>
-            Following are the offers
+            Following are the casino offers
           </h3>
           <hr style={{ margin: "25px 0" }} />
           {offers.map((offer, index) => {

@@ -114,6 +114,7 @@ router.delete("/user/profit/:emailId/:profitId", async (req, res) => {
 
 router.get("/offers/:type", (req, res) => {
   OfferSchema.find({ type: req.params.type })
+    .sort("order")
     .then((offers) => {
       return res.status(200).json(offers);
     })

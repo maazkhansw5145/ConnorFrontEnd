@@ -9,16 +9,16 @@ function Dashboard(props) {
       props.history.push("/");
     }
   }, [props.auth.isAuthenticated]);
-  
+
   return (
     <div className="dashboard">
       <div className="container">
         <div className="db_Actions">
           <ul>
             <div className="block">
-              <Link to="./starthere">
-                <h3>Start Here</h3>
-              </Link>
+              <h3>
+                Start Here <br></br>(Coming Soon)
+              </h3>
             </div>
 
             <div className="block">
@@ -46,11 +46,11 @@ function Dashboard(props) {
             </div>
 
             <div className="block">
-              <Link to="./oddsmatcher">
-                <h3>
-                  Oddsmatcher <br></br>(Coming Soon)
-                </h3>
-              </Link>
+              {/* <Link to="./oddsmatcher"> */}
+              <h3>
+                Oddsmatcher <br></br>(Coming Soon)
+              </h3>
+              {/* </Link> */}
             </div>
           </ul>
         </div>
