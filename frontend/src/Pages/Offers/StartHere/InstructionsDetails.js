@@ -4,7 +4,7 @@ import './StartHere.css'
 function InstructionsDetails(props) {
   
   return (
-    <div className="startHere">
+    <div className="startHere" style={{marginBottom:30}}>
       <div style={{ textAlign: "left", margin: "30px 45px" }}>
         <h2>{props.location.query.title}</h2>
         <p>{props.location.query.description}</p>

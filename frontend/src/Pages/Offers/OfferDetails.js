@@ -11,7 +11,7 @@ function OfferDetails(props) {
   }, [props.location]);
 
   return (
-    <div className="signupOffers">
+    <div className="signupOffers" style={{marginBottom:30}}>
       <div style={{ textAlign: "left", margin: "30px 45px" }}>
         <h2>{props.location.query.title}</h2>
         <p>{props.location.query.description}</p>
