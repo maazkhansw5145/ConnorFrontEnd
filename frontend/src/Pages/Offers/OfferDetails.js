@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import LaunchIcon from "@mui/icons-material/Launch";
+import "./CasinoOffers/CasinoOffers.css";
+
 function OfferDetails(props) {
   useEffect(() => {
+    console.log("CHEKC", !props.location.query);
     if (!props.location.query) {
       props.history.push("/casinoOffers");
     }
-  }, []);
+  }, [props.location]);
 
   return (
-    <div>
+    <div className="signupOffers">
       <div style={{ textAlign: "left", margin: "30px 45px" }}>
         <h2>{props.location.query.title}</h2>
         <p>{props.location.query.description}</p>
@@ -22,12 +25,14 @@ function OfferDetails(props) {
           margin: "15px auto",
         }}
       >
-        <img
-          width={"100%"}
-          height={280}
-          src={props.location.query.image}
-          alt="offer"
-        />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <img
+            width={192}
+            height={138}
+            src={props.location.query.image}
+            alt="Instruction"
+          />
+        </div>
         {props.location.query.details_link && (
           <a
             href={props.location.query.details_link}

@@ -13,7 +13,7 @@ function NavBar(props) {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml6c2N4cmh1YWVhaGllY3N3dGFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk4MjExMjUsImV4cCI6MTk4NTM5NzEyNX0.JvoWJKvE3pzHx5rU7IRhR4pTmKfSFkjDwZxaNfPxLZQ"
   );
   const logout = async () => {
-    await supabase.auth.signOut();
+    supabase.auth.signOut();
     props.logout();
     toast.success("Log Out Successfully", {
       position: "top-center",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -10,6 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import { DeleteForever, Check } from "@mui/icons-material";
 import ConfirmationModal from "./ConfirmationModal";
 import { format } from "date-fns";
+
 export default function EnhancedTable(props) {
   const [open, setOpen] = useState(false);
   const [deleteId, setDeleteId] = useState("");
@@ -19,6 +20,25 @@ export default function EnhancedTable(props) {
   const [details, setDetails] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("profit");
+
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    calculateTotal();
+  }, [props.profits]);
+
+  const calculateTotal = () => {
+    let total = 0;
+    props.profits.forEach((p) => {
+      console.log(p)
+      if (p.type === "profit") {
+        total = total + p.amount;
+      } else {
+        total = total - p.amount;
+      }
+    });
+    setTotal(total);
+  };
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -49,7 +69,7 @@ export default function EnhancedTable(props) {
             </TableHead>
             <TableBody>
               {props.profits.map((row, index) => {
-                console.log(row._id);
+                
                 return (
                   <TableRow key={index}>
                     <TableCell align="center">
@@ -67,11 +87,14 @@ export default function EnhancedTable(props) {
                     <TableCell align="center">{row.bookmaker}</TableCell>
                     <TableCell align="center">{row.details}</TableCell>
                     <TableCell align="center">
-                      <b><span
-                        style={{ color: row.type === "loss" ? "red" : "green" }}
-                      >
-                        {row.amount}
-                      </span>
+                      <b>
+                        <span
+                          style={{
+                            color: row.type === "loss" ? "red" : "green",
+                          }}
+                        >
+                          {row.amount}
+                        </span>
                       </b>
                     </TableCell>
                   </TableRow>
@@ -148,6 +171,24 @@ export default function EnhancedTable(props) {
                   </TableCell>
                 </TableRow>
               )}
+              <TableRow>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center">
+                  <b>Total</b>
+                </TableCell>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center">
+                  <b>
+                    <span
+                    style={{ color: total < 0 ? "red" : "green" }}
+                    >
+                      {/* {row.amount} */}
+                      {total}
+                    </span>
+                  </b>
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>

@@ -18,12 +18,14 @@ function InstructionsDetails(props) {
           margin: "15px auto",
         }}
       >
+        <div style={{display:'flex',justifyContent:'center'}}>
         <img
-          width={"100%"}
-          height={280}
+          width={192}
+          height={138}
           src={props.location.query.image}
           alt="Instruction"
         />
+        </div>
          {props.location.query.details_link && (
           <a
             href={props.location.query.details_link}

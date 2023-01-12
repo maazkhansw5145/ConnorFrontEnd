@@ -13,7 +13,6 @@ function ProfitTracker(props) {
   const [bookmaker, setBookmaker] = useState("all");
   const [month, setMonth] = useState("all");
 
-
   useEffect(() => {
     getProfits();
   }, []);
@@ -82,7 +81,7 @@ function ProfitTracker(props) {
 
   if (props.auth.user?.role !== "gold") {
     return (
-      <div className="casinoOffers" style={{background:'aliceblue'}}>
+      <div className="casinoOffers" style={{ background: "aliceblue" }}>
         <div
           style={{
             textAlign: "center",
@@ -96,7 +95,7 @@ function ProfitTracker(props) {
             You are not authorized to view this page
           </h2>
           <h4 style={{ margin: "20px 0", fontSize: 19 }}>
-            Kindly, purchase our {" "}
+            Kindly, purchase our{" "}
             <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
               gold
             </span>{" "}
@@ -105,7 +104,16 @@ function ProfitTracker(props) {
               features.
             </span>
           </h4>
-          <a href="https://discord.gg/jmw2Tcjjn6" style={{fontSize:19,textDecoration:'none',fontStyle:'italic'}}>Visit The Discord Server</a>
+          <a
+            href="https://discord.gg/jmw2Tcjjn6"
+            style={{
+              fontSize: 19,
+              textDecoration: "none",
+              fontStyle: "italic",
+            }}
+          >
+            Visit The Discord Server
+          </a>
         </div>
       </div>
     );
@@ -135,7 +143,7 @@ function ProfitTracker(props) {
           <select
             id="types"
             onChange={(e) => {
-              setMonth(e.target.value)
+              setMonth(e.target.value);
               if (e.target.value === "all") {
                 setProfits([...cacheProfits]);
               } else {
@@ -164,31 +172,6 @@ function ProfitTracker(props) {
             <option value="12">December</option>
           </select>
         </div>
-        <div>
-          <p style={{ fontSize: 20, fontWeight: 400 }}>Filter By Bookmaker</p>
-          <select
-            id="types"
-            onChange={(e) => {
-              setBookmaker(e.target.value)
-              if (e.target.value === "all") {
-                setProfits([...cacheProfits]);
-              } else {
-                onFilterByBookmaker(e.target.value);
-              }
-            }}
-            value={bookmaker}
-            style={{
-              padding: "10px 20px",
-              borderRadius: 10,
-              width: "webkit-fill-available",
-            }}
-          >
-            <option value="all">All</option>
-            <option value="10 bet">10 Bet</option>
-            <option value="12 bet">12 Bet</option>
-            <option value="19 bet">19 Bet</option>
-          </select>
-        </div>
 
         <div>
           <button
@@ -204,9 +187,9 @@ function ProfitTracker(props) {
               cursor: "pointer",
             }}
             onClick={() => {
-              setProfits([...cacheProfits])
-              setMonth("all")
-              setBookmaker("all")
+              setProfits([...cacheProfits]);
+              setMonth("all");
+              setBookmaker("all");
             }}
           >
             Reset Filters
