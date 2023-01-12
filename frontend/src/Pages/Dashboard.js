@@ -16,31 +16,32 @@ function Dashboard(props) {
         <div className="db_Actions">
           <ul>
             <div className="block">
-              <h3>
-                Start Here <br></br>(Coming Soon)
-              </h3>
+              <Link to="/startHere">
+                <h3>Start Here</h3>
+                
+              </Link>
             </div>
 
             <div className="block">
-              <Link to="./signupoffers">
+              <Link to="/signupoffers">
                 <h3>Signup Offers</h3>
               </Link>
             </div>
 
             <div className="block">
-              <Link to="./casinoOffers">
+              <Link to="/casinoOffers">
                 <h3>Casino Offers</h3>
               </Link>
             </div>
 
             <div className="block">
-              <Link to="./calculator">
+              <Link to="/calculator">
                 <h3>Calculator</h3>
               </Link>
             </div>
 
             <div className="block">
-              <Link to="./profitTracker">
+              <Link to="/profitTracker">
                 <h3>Profit Tracker</h3>
               </Link>
             </div>

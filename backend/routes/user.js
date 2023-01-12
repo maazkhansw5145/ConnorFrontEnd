@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const UserSchema = require("../models/User");
 const OfferSchema = require("../models/Offer.js");
+const InstructionsSchema = require("../models/Instructions");
 
 router.post("/user/save", async (req, res) => {
   console.log(req.body);
@@ -133,6 +134,18 @@ router.get("/check/:email", async (req, res) => {
   } else {
     return res.status(200).json({ user: user });
   }
+});
+
+router.get("/instructions/:type", (req, res) => {
+  InstructionsSchema.find({ type: req.params.type })
+    .sort("order")
+    .then((instructions) => {
+      return res.status(200).json(instructions);
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(404).json(err);
+    });
 });
 
 module.exports = router;

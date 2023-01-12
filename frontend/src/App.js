@@ -17,6 +17,7 @@ import Calculator from "./Tools/Calculator/Calculator";
 import Oddsmatcher from "./Tools/Oddsmatcher/Oddsmatcher";
 import ProfitTracker from "./Tools/ProfitTracker/ProfitTracker";
 import OfferDetails from "./Pages/Offers/OfferDetails";
+import InstructionsDetails from "./Pages/Offers/StartHere/InstructionsDetails";
 // Layout
 import NavBar from "./Layout/NavBar";
 import Footer from "./Layout/Footer";
@@ -33,6 +34,12 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/startHere" component={StartHere} />
+              <Route
+                exact
+                path="/instructions/details/:id"
+                component={InstructionsDetails}
+              />
+
               <Route exact path="/signupOffers" component={SignupOffers} />
               <Route exact path="/casinoOffers" component={CasinoOffers} />
               <Route exact path="/offer/details/:id" component={OfferDetails} />

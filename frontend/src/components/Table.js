@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import TableHead from "@mui/material/TableHead";
 import { DeleteForever, Check } from "@mui/icons-material";
 import ConfirmationModal from "./ConfirmationModal";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 export default function EnhancedTable(props) {
   const [open, setOpen] = useState(false);
   const [deleteId, setDeleteId] = useState("");
@@ -40,7 +40,10 @@ export default function EnhancedTable(props) {
                   <b>Details</b>
                 </TableCell>
                 <TableCell align="center">
-                  <b>Profit / Loss&nbsp;$</b>
+                  <b>
+                    <span style={{ color: "green" }}>Profit</span> /{" "}
+                    <span style={{ color: "red" }}>Loss</span>&nbsp;$
+                  </b>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -58,10 +61,19 @@ export default function EnhancedTable(props) {
                         }}
                       />
                     </TableCell>
-                    <TableCell align="center">{format(new Date(row.date), 'yyyy/MM/dd')}</TableCell>
+                    <TableCell align="center">
+                      {format(new Date(row.date), "yyyy/MM/dd")}
+                    </TableCell>
                     <TableCell align="center">{row.bookmaker}</TableCell>
                     <TableCell align="center">{row.details}</TableCell>
-                    <TableCell align="center">{row.amount}</TableCell>
+                    <TableCell align="center">
+                      <b><span
+                        style={{ color: row.type === "loss" ? "red" : "green" }}
+                      >
+                        {row.amount}
+                      </span>
+                      </b>
+                    </TableCell>
                   </TableRow>
                 );
               })}
