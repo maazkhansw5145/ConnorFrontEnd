@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { connect } from "react-redux";
 import { login } from "../Services/Redux/actions/authActions";
 import Loading from "../components/Loading";
+
 function Home(props) {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -15,8 +16,8 @@ function Home(props) {
     }
   }, [props.auth.isAuthenticated]);
   const supabase = createClient(
-    "https://izscxrhuaeahiecswtad.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml6c2N4cmh1YWVhaGllY3N3dGFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk4MjExMjUsImV4cCI6MTk4NTM5NzEyNX0.JvoWJKvE3pzHx5rU7IRhR4pTmKfSFkjDwZxaNfPxLZQ"
+    "https://ffliriltakvqsejjjbxp.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmbGlyaWx0YWt2cXNlampqYnhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzM3MzY0MTMsImV4cCI6MTk4OTMxMjQxM30.3FJxD6lH0e7wGUNApdteMdTOmRhimBZDLLbJq14vhqQ"
   );
   const getUser = () => {
     supabase.auth.getUser().then(async (value) => {
@@ -56,8 +57,6 @@ function Home(props) {
             <p>
               Learn how to make money gambling using verified methods to ensure
               you always come out the winner. <br />
-              Start with as little as $80 and complete our free trial to make as
-              much as $24 profit!
             </p>
           </div>
         </div>
@@ -69,9 +68,9 @@ function Home(props) {
             Get access to offers worth $100s, make money in your spare time and
             don't forget to follow the instructions!
           </p>
-          <form action="https://discord.gg/jmw2Tcjjn6">
+          <a href="https://discord.gg/jmw2Tcjjn6">
             <button className="joinBtn">JOIN DISCORD</button>
-          </form>
+          </a>
         </div>
       </div>
       <></>

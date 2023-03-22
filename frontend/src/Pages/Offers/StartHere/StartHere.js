@@ -19,7 +19,7 @@ function Instructions(props) {
   }, [props.auth.isAuthenticated]);
 
   const getInstructions = () => {
-    let role = props.auth.user?.role === "gold" ? "premium" : "non-premium";
+    let role = props.auth.user?.role === "premium" ? "premium" : "non-premium";
     fetch(`${url}/instructions/${role}`, {
       method: "GET",
       headers: {
@@ -59,8 +59,8 @@ function Instructions(props) {
               color="cornflowerblue"
             />
             <h2>
-              <span style={{ color: "Cornflowerblue" }}>Sorry!</span> we don't have any
-              instructions yet.
+              <span style={{ color: "Cornflowerblue" }}>Sorry!</span> we don't
+              have any instructions yet.
             </h2>
           </div>
         </div>
@@ -70,13 +70,14 @@ function Instructions(props) {
             boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)",
             padding: 8,
             borderRadius: 10,
-            width: 580,
+            maxWidth: 580,
+            width: "90%",
             margin: "20px auto",
           }}
         >
           <h3 style={{ textAlign: "start", marginLeft: 15 }}>
             Following are the instructions for{" "}
-            {props.auth.user?.role === "gold" ? "premium" : "non premium"} users
+            {props.auth.user?.role === "premium" ? "premium" : "non premium"} users
           </h3>
           <hr style={{ margin: "25px 0" }} />
           {instructions.map((instruction, index) => {

@@ -4,3 +4,5 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const CLEAR_AUTH_MSG = "CLEAR_AUTH_MSG";
 export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const PREMIUM_PURCHASE = "PREMIUM_PURCHASE";
+export const PREMIUM_END = "PREMIUM_END";

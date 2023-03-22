@@ -6,8 +6,8 @@ import "./login.css";
 import { connect } from "react-redux";
 import { login } from "../Services/Redux/actions/authActions";
 const supabase = createClient(
-  "https://izscxrhuaeahiecswtad.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml6c2N4cmh1YWVhaGllY3N3dGFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk4MjExMjUsImV4cCI6MTk4NTM5NzEyNX0.JvoWJKvE3pzHx5rU7IRhR4pTmKfSFkjDwZxaNfPxLZQ"
+  "https://ffliriltakvqsejjjbxp.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmbGlyaWx0YWt2cXNlampqYnhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzM3MzY0MTMsImV4cCI6MTk4OTMxMjQxM30.3FJxD6lH0e7wGUNApdteMdTOmRhimBZDLLbJq14vhqQ"
 );
 
 function Login(props) {
@@ -43,16 +43,30 @@ function Login(props) {
   // });
 
   return (
-    <div style={{ width: "50%", margin: "100px auto 0" }}>
-      <hr />
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      className="main"
+    >
+      <div
+        style={{
+          width: "90%",
+          maxWidth: 545,
+        }}
+      >
+        <hr />
 
-      <div style={{ height: 375 }}>
-        <Auth
-          supabaseClient={supabase}
-          appearance={{ theme: ThemeSupa }}
-          theme="dark"
-          providers={["discord"]}
-        />
+        <div>
+          <Auth
+            supabaseClient={supabase}
+            appearance={{ theme: ThemeSupa }}
+            theme="dark"
+            providers={["discord"]}
+          />
+        </div>
       </div>
     </div>
   );

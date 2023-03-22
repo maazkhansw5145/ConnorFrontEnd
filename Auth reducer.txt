@@ -1,0 +1,19 @@
+const initialState = {
+  isAuthenticated: true,
+  msg: "Login Successfully",
+  user: {
+    _id: "63c74cf29b6c5deeeb9f3ef2",
+    full_name: "maazkhan",
+    email: "keepcalm5145@gmail.com",
+    picture:
+      "https://cdn.discordapp.com/avatars/1047238819348480010/79ee349b6511e2000af8a32fb8a6974e.png",
+    email_verified: true,
+    premium: {
+      transaction_hash:
+        "0x8f1c06e72dc4b96c09f4c8b3f3c2f6d9475f18b3cb3f3a7c794d9a25f9f0a62a",
+      bought_at: "2023-03-02T18:34:11.404Z",
+    },
+    role: "premium",
+    profit_tracker: [],
+  },
+};

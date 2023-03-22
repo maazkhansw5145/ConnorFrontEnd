@@ -52,12 +52,14 @@ function InstructionsCard(props) {
           }}
           style={{
             background: "#eba21c",
-            padding: "10px 30px",
+            padding: "10px 4%",
             borderRadius: 10,
             fontWeight: 700,
             cursor: "pointer",
             textDecoration: "none",
             color: "black",
+            boxShadow: "0px 0px 1px 0px rgba(0,0,0,0.45)",
+
           }}
         >
           Instructions Details

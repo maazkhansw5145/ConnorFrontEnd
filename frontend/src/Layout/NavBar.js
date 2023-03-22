@@ -9,8 +9,8 @@ import { logout } from "../Services/Redux/actions/authActions";
 
 function NavBar(props) {
   const supabase = createClient(
-    "https://izscxrhuaeahiecswtad.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml6c2N4cmh1YWVhaGllY3N3dGFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk4MjExMjUsImV4cCI6MTk4NTM5NzEyNX0.JvoWJKvE3pzHx5rU7IRhR4pTmKfSFkjDwZxaNfPxLZQ"
+    "https://ffliriltakvqsejjjbxp.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmbGlyaWx0YWt2cXNlampqYnhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzM3MzY0MTMsImV4cCI6MTk4OTMxMjQxM30.3FJxD6lH0e7wGUNApdteMdTOmRhimBZDLLbJq14vhqQ"
   );
   const logout = async () => {
     supabase.auth.signOut();
@@ -28,11 +28,11 @@ function NavBar(props) {
   };
   return (
     <div className="navbar">
-      <NavLink to="/" className="title" exact>
+      <NavLink to="/" className="title" exact style={{ fontSize: "1.2em" }}>
         ProfitOutcome
       </NavLink>
 
-      <div style={{ display: "flex", justifyContent: "end" }} className="login">
+      <div style={{ display: "flex", justifyContent: "end",alignItems:'center' }} className="login">
         <div
           style={{
             borderLeft: "1px solid rgb(148 242 227)",
@@ -44,9 +44,13 @@ function NavBar(props) {
           <button
             onClick={() => logout()}
             className="login"
-            style={{ background: "none", borderWidth: 0, marginRight: 12 }}
+            style={{
+              background: "none",
+              borderWidth: 0,
+              marginRight: 12,
+            }}
           >
-            Logout
+            <p style={{ fontSize: "1.2em", margin: 0 }}>Logout</p>
           </button>
         ) : (
           <NavLink
@@ -56,6 +60,7 @@ function NavBar(props) {
               color: "white",
               textDecoration: "none",
               marginRight: 12,
+              fontSize: "1.2em",
             }}
           >
             Login
@@ -74,6 +79,9 @@ function NavBar(props) {
           to="/dashboard"
           activeStyle={{ color: "coral", textDecoration: "overline" }}
           className="login"
+          style={{
+            fontSize: "1.2em",
+          }}
         >
           Dashboard
         </NavLink>

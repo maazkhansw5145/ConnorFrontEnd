@@ -13,9 +13,7 @@
   font-size: 22px;
   float: left;
   text-align: center;
-
-  margin-left: 2.5rem;
-
+  margin-left: 4%;
   color: #fff;
   text-decoration: none !important;
 }
@@ -25,9 +23,8 @@
 }
 
 .login {
-  font-size: 20px;
   float: right;
-  margin-right: 2.5rem;
+  margin-right: 4%;
   color: #fff;
   text-decoration: none;
 }

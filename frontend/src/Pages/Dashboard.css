@@ -31,6 +31,18 @@
   border-bottom: 1px solid #e7edf1;
   border-right: 1px solid #e7edf1;
 }
+
+@media screen and (max-width: 400px) {
+  .block {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    width: calc(100% / 2);
+    border-bottom: 1px solid #e7edf1;
+    border-right: 1px solid #e7edf1;
+  }
+}
+
 .block:link {
   text-decoration: none !important;
 }

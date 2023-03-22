@@ -4,6 +4,9 @@ import Table from "../../components/Table";
 import Loading from "../../components/Loading";
 import url from "../../Config/URL";
 import { connect } from "react-redux";
+import { CheckPremium } from "../../utils/CheckPremium";
+import PremiumExpires from "../../components/PremiumExpires";
+import { premiumEnd } from "../../Services/Redux/actions/authActions";
 
 function ProfitTracker(props) {
   const [cacheProfits, setCacheProfits] = useState([]);
@@ -79,44 +82,48 @@ function ProfitTracker(props) {
     return <Loading />;
   }
 
-  if (props.auth.user?.role !== "gold") {
-    return (
-      <div className="casinoOffers" style={{ background: "aliceblue" }}>
-        <div
-          style={{
-            textAlign: "center",
-            color: "black",
-            padding: "90px 40px 0 40px",
-          }}
-        >
-          <h2
-            style={{ color: "lightseagreen", fontSize: 28, marginBottom: 40 }}
-          >
-            You are not authorized to view this page
-          </h2>
-          <h4 style={{ margin: "20px 0", fontSize: 19 }}>
-            Kindly, purchase our{" "}
-            <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
-              gold
-            </span>{" "}
-            membership to access all the{" "}
-            <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
-              features.
-            </span>
-          </h4>
-          <a
-            href="https://discord.gg/jmw2Tcjjn6"
-            style={{
-              fontSize: 19,
-              textDecoration: "none",
-              fontStyle: "italic",
-            }}
-          >
-            Visit The Discord Server
-          </a>
-        </div>
-      </div>
-    );
+  if (props.auth.user?.role !== "premium") {
+    props.history.push("/buy/premium");
+    // return (
+    //   <div className="casinoOffers" style={{ background: "aliceblue" }}>
+    //     <div
+    //       style={{
+    //         textAlign: "center",
+    //         color: "black",
+    //         padding: "90px 40px 0 40px",
+    //       }}
+    //     >
+    //       <h2
+    //         style={{ color: "lightseagreen", fontSize: 28, marginBottom: 40 }}
+    //       >
+    //         You are not authorized to view this page
+    //       </h2>
+    //       <h4 style={{ margin: "20px 0", fontSize: 19 }}>
+    //         Kindly, purchase our{" "}
+    //         <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
+    //           gold
+    //         </span>{" "}
+    //         membership to access all the{" "}
+    //         <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
+    //           features.
+    //         </span>
+    //       </h4>
+    //       <a
+    //         href="https://discord.gg/jmw2Tcjjn6"
+    //         style={{
+    //           fontSize: 19,
+    //           textDecoration: "none",
+    //           fontStyle: "italic",
+    //         }}
+    //       >
+    //         Visit The Discord Server
+    //       </a>
+    //     </div>
+    //   </div>
+    // );
+  } else if (!CheckPremium(props.auth.user.premium.bought_at)) {
+    props.premiumEnd(props.auth.user._id);
+    return <PremiumExpires {...props} />;
   }
 
   return (
@@ -185,6 +192,7 @@ function ProfitTracker(props) {
               boxShadow: "0px 0px 2px 0px rgba(0,0,0,0.75)",
               borderWidth: 0,
               cursor: "pointer",
+              borderRadius:10
             }}
             onClick={() => {
               setProfits([...cacheProfits]);
@@ -208,7 +216,7 @@ function ProfitTracker(props) {
       <div style={{ display: "flex", justifyContent: "end" }}>
         <button
           style={{
-            color: "black",
+            color: "white",
             backgroundColor: "#eba21c",
             padding: "10px 20px",
             marginTop: 0,
@@ -218,6 +226,8 @@ function ProfitTracker(props) {
             cursor: "pointer",
             marginRight: 25,
             borderRadius: 10,
+            boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)",
+
           }}
           onClick={() => setAddRow(true)}
         >
@@ -232,4 +242,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(ProfitTracker);
+export default connect(mapStateToProps, { premiumEnd })(ProfitTracker);

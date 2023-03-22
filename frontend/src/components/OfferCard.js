@@ -25,61 +25,63 @@ function OfferCard(props) {
             value={0}
             style={{ background: "lightgray" }}
           />
-
-          {/* tags */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: 12,
-            }}
-          >
-            <div style={{ marginTop: "auto", display: "flex" }}>
-              {props.offer.tags.map((tag) => {
-                return (
-                  <p
-                    style={{
-                      background: "lightgray",
-                      fontWeight: 700,
-                      padding: "2px 10px",
-                      fontSize: 12,
-                      marginRight: 5,
-                    }}
-                  >
-                    {tag.text}
-                  </p>
-                );
-              })}
-            </div>
-            <Link
-              to={{
-                pathname: `/offer/details/${props.offer._id}`,
-                query: {
-                  id: props.offer._id,
-                  title: props.offer.title,
-                  description: props.offer.description,
-                  detailed_description: props.offer.detailed_description,
-                  tags: props.offer.tags,
-                  price: props.offer.price,
-                  image: props.offer.image,
-                  details_link: props.offer.details_link,
-                },
-              }}
-              style={{
-                background: "#eba21c",
-                padding: "10px 30px",
-                borderRadius: 10,
-                fontWeight: 700,
-                cursor: "pointer",
-                textDecoration: "none",
-                color: "black",
-              }}
-            >
-              Offer Details
-            </Link>
-          </div>
         </div>
       </div>
+
+      {/* tags */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "end",
+          marginRight: 10,
+        }}
+      >
+        <div style={{ marginTop: "auto", display: "flex", marginRight: 15 }}>
+          {props.offer.tags.map((tag) => {
+            return (
+              <p
+                style={{
+                  background: "lightgray",
+                  fontWeight: 700,
+                  padding: "2px 10px",
+                  fontSize: 12,
+                  marginRight: 5,
+                }}
+              >
+                {tag.text}
+              </p>
+            );
+          })}
+        </div>
+        <Link
+          to={{
+            pathname: `/offer/details/${props.offer._id}`,
+            query: {
+              id: props.offer._id,
+              title: props.offer.title,
+              description: props.offer.description,
+              detailed_description: props.offer.detailed_description,
+              tags: props.offer.tags,
+              price: props.offer.price,
+              image: props.offer.image,
+              details_link: props.offer.details_link,
+            },
+          }}
+          style={{
+            background: "#eba21c",
+            padding: "10px 4%",
+            borderRadius: 10,
+            fontWeight: 700,
+            cursor: "pointer",
+            textDecoration: "none",
+            color: "black",
+            boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)",
+          }}
+        >
+          Offer Details
+        </Link>
+      </div>
+
       <hr style={{ margin: "10px 0" }} />
     </div>
   );

@@ -37,6 +37,10 @@ router.post("/user/save", async (req, res) => {
   }
 });
 
+router.get("/testing", async (req, res) => {
+  return res.status(400).json({ msg: "Server is up and running" });
+});
+
 router.post("/user/profit/:emailId", async (req, res) => {
   UserSchema.findOneAndUpdate(
     { email: req.params.emailId },
@@ -141,6 +145,69 @@ router.get("/instructions/:type", (req, res) => {
     .sort("order")
     .then((instructions) => {
       return res.status(200).json(instructions);
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(404).json(err);
+    });
+});
+
+router.post("/premium/purchase/:userId", (req, res) => {
+  UserSchema.findByIdAndUpdate(
+    req.params.userId,
+    {
+      premium: {
+        transaction_hash: req.body.transactionHash,
+        bought_at: Date.now(),
+      },
+      role: "premium",
+    },
+    { new: true }
+  )
+    .then((newUser) => {
+      console.log(newUser)
+      return res.status(200).json(newUser);
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(404).json(err);
+    });
+});
+
+router.post("/premium/end/:userId", (req, res) => {
+  UserSchema.findByIdAndUpdate(
+    req.params.userId,
+    {
+      premium: {},
+      role: "authenticated",
+    },
+    { new: true }
+  )
+    .then((newUser) => {
+      return res.status(200).json(newUser);
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(404).json(err);
+    });
+});
+
+
+router.get("/instruction/details/:id", (req, res) => {
+  InstructionsSchema.findById(req.params.id)
+    .then((instruction) => {
+      return res.status(200).json(instruction);
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(404).json(err);
+    });
+});
+
+router.get("/offer/details/:id", (req, res) => {
+  OfferSchema.findById(req.params.id)
+    .then((offer) => {
+      return res.status(200).json(offer);
     })
     .catch((err) => {
       console.log(err);

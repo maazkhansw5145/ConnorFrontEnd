@@ -21,6 +21,7 @@ import InstructionsDetails from "./Pages/Offers/StartHere/InstructionsDetails";
 // Layout
 import NavBar from "./Layout/NavBar";
 import Footer from "./Layout/Footer";
+import BuyPremium from "./Pages/BuyPremium";
 
 function App() {
   return (
@@ -41,11 +42,14 @@ function App() {
               />
 
               <Route exact path="/signupOffers" component={SignupOffers} />
-              <Route exact path="/casinoOffers" component={CasinoOffers} />
+              <Route exact path="/reloadOffers" component={CasinoOffers} />
               <Route exact path="/offer/details/:id" component={OfferDetails} />
               <Route exact path="/calculator" component={Calculator} />
               <Route exact path="/oddsmatcher" component={Oddsmatcher} />
               <Route exact path="/profitTracker" component={ProfitTracker} />
+              <Route exact path="/buy/premium" component={BuyPremium} />
+
+              
             </Switch>
             <Footer />
           </Router>

@@ -66,37 +66,37 @@ function QualBet(props) {
     setShowResults(true);
   };
 
-  if (props.auth.user?.role !== "gold") {
-    return (
-      <div className="casinoOffers" style={{background:'aliceblue'}}>
-        <div
-          style={{
-            textAlign: "center",
-            color: "black",
-            padding: "90px 40px 0 40px",
-          }}
-        >
-          <h2
-            style={{ color: "lightseagreen", fontSize: 28, marginBottom: 40 }}
-          >
-            You are not authorized to view this page
-          </h2>
-          <h4 style={{ margin: "20px 0", fontSize: 19 }}>
-            Kindly, purchase our {" "}
-            <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
-              gold
-            </span>{" "}
-            membership to access all the{" "}
-            <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
-              features.
-            </span>
-          </h4>
-          <a href="https://discord.gg/jmw2Tcjjn6" style={{fontSize:19,textDecoration:'none',fontStyle:'italic'}}>Visit The Discord Server</a>
-        </div>
-      </div>
-    );
+  if (props.auth.user?.role !== "premium") {
+    props.history.push("/buy/premium");
+    // return (
+    //   <div className="casinoOffers" style={{background:'aliceblue'}}>
+    //     <div
+    //       style={{
+    //         textAlign: "center",
+    //         color: "black",
+    //         padding: "90px 40px 0 40px",
+    //       }}
+    //     >
+    //       <h2
+    //         style={{ color: "lightseagreen", fontSize: 28, marginBottom: 40 }}
+    //       >
+    //         You are not authorized to view this page
+    //       </h2>
+    //       <h4 style={{ margin: "20px 0", fontSize: 19 }}>
+    //         Kindly, purchase our {" "}
+    //         <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
+    //           gold
+    //         </span>{" "}
+    //         membership to access all the{" "}
+    //         <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
+    //           features.
+    //         </span>
+    //       </h4>
+    //       <a href="https://discord.gg/jmw2Tcjjn6" style={{fontSize:19,textDecoration:'none',fontStyle:'italic'}}>Visit The Discord Server</a>
+    //     </div>
+    //   </div>
+    // );
   }
-
 
   return (
     <div>
@@ -131,7 +131,8 @@ function QualBet(props) {
                   id="backBet"
                   onChange={(e) => setBackBet(e.target.value)}
                   value={backBet}
-                ></input>
+                  style={{ width: "85%" }}
+                />
               </div>
               <div>
                 <h4>Odds (Decimal)</h4>
@@ -139,7 +140,8 @@ function QualBet(props) {
                   id="backOdds"
                   onChange={(e) => setBackOdds(e.target.value)}
                   value={backOdds}
-                ></input>
+                  style={{ width: "85%" }}
+                />
               </div>
             </div>
             <div className="layBet">
@@ -149,7 +151,8 @@ function QualBet(props) {
                   id="layOdds"
                   onChange={(e) => setLayOdds(e.target.value)}
                   value={layOdds}
-                ></input>
+                  style={{ width: "85%" }}
+                />
               </div>
               <div>
                 <h4>Lay Commission %</h4>
@@ -157,7 +160,8 @@ function QualBet(props) {
                   id="layCommission"
                   onChange={(e) => setLayCommision(e.target.value)}
                   value={layCommision}
-                ></input>
+                  style={{ width: "85%" }}
+                />
               </div>
             </div>
           </>
@@ -172,7 +176,8 @@ function QualBet(props) {
                       id="backBet"
                       onChange={(e) => setBackBet(e.target.value)}
                       value={backBet}
-                    ></input>
+                      style={{ width: "85%" }}
+                    />
                   </div>
                   <div>
                     <h4>Odds (Decimal)</h4>
@@ -180,7 +185,8 @@ function QualBet(props) {
                       id="backOdds"
                       onChange={(e) => setBackOdds(e.target.value)}
                       value={backOdds}
-                    ></input>
+                      style={{ width: "85%" }}
+                    />
                   </div>
                 </div>
                 <div className="layBet">
@@ -190,7 +196,8 @@ function QualBet(props) {
                       id="layOdds"
                       onChange={(e) => setLayOdds(e.target.value)}
                       value={layOdds}
-                    ></input>
+                      style={{ width: "85%" }}
+                    />
                   </div>
                   <div>
                     <h4>Lay Commission %</h4>
@@ -198,7 +205,8 @@ function QualBet(props) {
                       id="layCommission"
                       onChange={(e) => setLayCommision(e.target.value)}
                       value={layCommision}
-                    ></input>
+                      style={{ width: "85%" }}
+                    />
                   </div>
                 </div>
               </div>
@@ -265,7 +273,10 @@ function QualBet(props) {
             </div>
           </>
         )}
-        <div className="calculateResults">
+        <div
+          className="calculateResults"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <button
             type="button"
             id="calcBtn"
@@ -275,6 +286,18 @@ function QualBet(props) {
               } else {
                 calculateQual();
               }
+            }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              background: "green",
+              borderWidth: 0,
+              borderRadius: 10,
+              cursor: "pointer",
+              boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)",
+              color: "white",
+              justifyContent: "center",
+              margin: "20px 0",
             }}
           >
             Calculate

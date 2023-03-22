@@ -5,6 +5,9 @@ import OfferCard from "../../../components/OfferCard";
 import Loading from "../../../components/Loading";
 import "./CasinoOffers.css";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import { CheckPremium } from "../../../utils/CheckPremium";
+import PremiumExpires from "../../../components/PremiumExpires";
+import { premiumEnd } from "../../../Services/Redux/actions/authActions";
 function Offers(props) {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,44 +41,46 @@ function Offers(props) {
     return <Loading />;
   }
 
-  
-  if (props.auth.user?.role !== "gold") {
-    return (
-      <div className="casinoOffers" style={{background:'aliceblue'}}>
-        <div
-          style={{
-            textAlign: "center",
-            color: "black",
-            padding: "90px 40px 0 40px",
-          }}
-        >
-          <h2
-            style={{ color: "lightseagreen", fontSize: 28, marginBottom: 40 }}
-          >
-            You are not authorized to view this page
-          </h2>
-          <h4 style={{ margin: "20px 0", fontSize: 19 }}>
-            Kindly, purchase our {" "}
-            <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
-              gold
-            </span>{" "}
-            membership to access all the{" "}
-            <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
-              features.
-            </span>
-          </h4>
-          <a href="https://discord.gg/jmw2Tcjjn6" style={{fontSize:19,textDecoration:'none',fontStyle:'italic'}}>Visit The Discord Server</a>
-          <div
-            style={{
-              margin: "60px 0 30px 0",
-            }}
-          ></div>
-        </div>
-      </div>
-    );
+  if (props.auth.user?.role !== "premium") {
+    props.history.push("/buy/premium");
+
+    // return (
+    //   <div className="casinoOffers" style={{background:'aliceblue'}}>
+    //     <div
+    //       style={{
+    //         textAlign: "center",
+    //         color: "black",
+    //         padding: "90px 40px 0 40px",
+    //       }}
+    //     >
+    //       <h2
+    //         style={{ color: "lightseagreen", fontSize: 28, marginBottom: 40 }}
+    //       >
+    //         You are not authorized to view this page
+    //       </h2>
+    //       <h4 style={{ margin: "20px 0", fontSize: 19 }}>
+    //         Kindly, purchase our {" "}
+    //         <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
+    //           gold
+    //         </span>{" "}
+    //         membership to access all the{" "}
+    //         <span style={{ color: "cornflowerblue", fontStyle: "italic" }}>
+    //           features.
+    //         </span>
+    //       </h4>
+    //       <a href="https://discord.gg/jmw2Tcjjn6" style={{fontSize:19,textDecoration:'none',fontStyle:'italic'}}>Visit The Discord Server</a>
+    //       <div
+    //         style={{
+    //           margin: "60px 0 30px 0",
+    //         }}
+    //       ></div>
+    //     </div>
+    //   </div>
+    // );
+  } else if (!CheckPremium(props.auth.user.premium.bought_at)) {
+    props.premiumEnd(props.auth.user._id);
+    return <PremiumExpires {...props} />;
   }
-
-
   return (
     <div className="casinoOffers">
       {offers.length === 0 ? (
@@ -106,12 +111,13 @@ function Offers(props) {
             boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)",
             padding: 8,
             borderRadius: 10,
-            width: 580,
+            maxWidth: 580,
+            width: "90%",
             margin: "20px auto",
           }}
         >
           <h3 style={{ textAlign: "start", marginLeft: 15 }}>
-            Following are the casino offers
+            Following are the reload offers
           </h3>
           <hr style={{ margin: "25px 0" }} />
           {offers.map((offer, index) => {
@@ -127,4 +133,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(Offers);
+export default connect(mapStateToProps, { premiumEnd })(Offers);
